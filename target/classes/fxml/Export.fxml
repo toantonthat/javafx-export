@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.control.DatePicker?>
+
+<VBox prefHeight="672.0" prefWidth="950.0" stylesheets="@../styles/form.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+	<children>
+		<HBox alignment="CENTER_RIGHT" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="0.0" prefWidth="800.0" styleClass="top-bar" VBox.vgrow="NEVER">
+			<padding>
+				<Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+			</padding>
+		</HBox>
+		<HBox alignment="CENTER" prefHeight="80.0" prefWidth="950.0" styleClass="header" VBox.vgrow="NEVER">
+			<VBox.margin>
+				<Insets />
+			</VBox.margin>
+			<padding>
+				<Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+			</padding>
+			<children>
+				<Label text="PHẦN KÊ KHAI CỦA NGƯỜI ĐĂNG KÝ" textFill="WHITE">
+					<font>
+						<Font name="System Bold" size="18.0" />
+					</font>
+					<HBox.margin>
+						<Insets left="300.0" />
+					</HBox.margin>
+				</Label>
+				<Button mnemonicParsing="false" onAction="#closeAction" prefHeight="38.0" prefWidth="25.0" styleClass="close-button">
+					<HBox.margin>
+						<Insets left="270.0" />
+					</HBox.margin>
+				</Button>
+			</children>
+		</HBox>
+		<VBox alignment="TOP_CENTER" minWidth="-Infinity" prefWidth="640.0" styleClass="vbox-body" VBox.vgrow="ALWAYS">
+			<children>
+				<GridPane alignment="CENTER" hgap="10.0" vgap="10.0">
+					<columnConstraints>
+						<ColumnConstraints hgrow="SOMETIMES" maxWidth="494.0" minWidth="10.0" prefWidth="461.0" />
+						<ColumnConstraints hgrow="SOMETIMES" maxWidth="665.0" minWidth="10.0" prefWidth="459.0" />
+					</columnConstraints>
+					<rowConstraints>
+						<RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+						<RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+						<RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+						<RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+						<RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+						<RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+						<RowConstraints maxHeight="95.0" minHeight="10.0" prefHeight="51.0" vgrow="SOMETIMES" />
+						<RowConstraints maxHeight="100.0" minHeight="47.0" prefHeight="91.0" />
+						<RowConstraints maxHeight="100.0" minHeight="47.0" prefHeight="91.0" />
+					</rowConstraints>
+					<children>
+						<VBox GridPane.rowIndex="1">
+							<children>
+								<VBox>
+									<children>
+										<Label minWidth="200" text="Tên (Viết chữ in hoa) ông (hoặc bà) : ">
+											<VBox.margin>
+												<Insets />
+											</VBox.margin>
+										</Label>
+									</children>
+								</VBox>
+								<VBox>
+									<children>
+										<TextField fx:id="tenField" prefHeight="25.0" prefWidth="206.0" GridPane.columnIndex="1">
+											<GridPane.margin>
+												<Insets right="10.0" />
+											</GridPane.margin>
+										</TextField>
+									</children>
+								</VBox>
+							</children>
+							<VBox.margin>
+								<Insets>
+									<bottom>10</bottom>
+								</Insets>
+							</VBox.margin>
+						</VBox>
+
+						<VBox GridPane.rowIndex="2">
+							<children>
+								<VBox>
+									<children>
+										<Label minWidth="200" text="Năm sinh : " />
+									</children>
+								</VBox>
+								<VBox>
+									<children>
+										<TextField fx:id="namSinhField" GridPane.columnIndex="2">
+											<GridPane.margin>
+												<Insets right="10.0" />
+											</GridPane.margin>
+										</TextField>
+									</children>
+								</VBox>
+							</children>
+						</VBox>
+
+						<VBox GridPane.rowIndex="3">
+							<children>
+								<VBox>
+									<children>
+										<Label minWidth="200" text="Số CMND : " />
+									</children>
+								</VBox>
+								<VBox>
+									<children>
+										<TextField fx:id="soCMNDField" GridPane.columnIndex="3">
+											<GridPane.margin>
+												<Insets right="10.0" />
+											</GridPane.margin>
+										</TextField>
+									</children>
+								</VBox>
+							</children>
+						</VBox>
+
+						<VBox GridPane.rowIndex="4">
+							<children>
+								<VBox>
+									<children>
+										<Label minWidth="200" text="Ngày cấp : " />
+									</children>
+								</VBox>
+								<VBox>
+									<children>
+										<DatePicker fx:id="ngayCapfield" GridPane.columnIndex="4">
+											<GridPane.margin>
+												<Insets right="10.0" />
+											</GridPane.margin>
+										</DatePicker>
+									</children>
+								</VBox>
+							</children>
+						</VBox>
+
+						<VBox GridPane.rowIndex="5">
+							<children>
+								<VBox>
+									<children>
+										<Label minWidth="200" text="Nơi cấp : " />
+									</children>
+								</VBox>
+								<VBox>
+									<children>
+										<TextField fx:id="noiCapField" GridPane.columnIndex="5">
+											<GridPane.margin>
+												<Insets right="10.0" />
+											</GridPane.margin>
+										</TextField>
+									</children>
+								</VBox>
+							</children>
+						</VBox>
+
+						<VBox GridPane.rowIndex="6">
+							<children>
+								<VBox>
+									<children>
+										<Label minWidth="200" text="Nghề nghiệp : " />
+									</children>
+								</VBox>
+								<VBox>
+									<children>
+										<TextField fx:id="ngheNghiepField" GridPane.columnIndex="6">
+											<GridPane.margin>
+												<Insets right="10.0" />
+											</GridPane.margin>
+										</TextField>
+									</children>
+								</VBox>
+							</children>
+						</VBox>
+
+						<VBox GridPane.rowIndex="7">
+							<children>
+								<VBox>
+									<children>
+										<Label minWidth="200" text="Địa chỉ thường trú : " />
+									</children>
+								</VBox>
+								<VBox />
+								<TextArea id="txaDiaChiThuongTru" prefHeight="200.0" prefWidth="200.0" />
+							</children>
+						</VBox>
+						<VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+							<children>
+								<Label id="lblThuaDat" text="Thửa đất số :" />
+								<TextField id="thuaDatField" />
+							</children>
+							<GridPane.margin>
+								<Insets left="5.0" />
+							</GridPane.margin>
+						</VBox>
+						<Label id="lblHeader1" prefHeight="44.0" prefWidth="469.0" text="1. Người sử dụng đất, chủ sở hữu tài sản gắn liền với đất, người quản lý đất">
+							<font>
+								<Font name="System Bold" size="12.0" />
+							</font>
+						</Label>
+						<Label text="2. Thửa đất đăng ký" GridPane.columnIndex="1">
+							<font>
+								<Font name="System Bold" size="12.0" />
+							</font>
+						</Label>
+						<VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+							<children>
+								<Label id="lblDiaChi" text="Địa chỉ tại :" />
+								<TextField id="diaChiField" />
+							</children>
+							<GridPane.margin>
+								<Insets left="5.0" />
+							</GridPane.margin>
+						</VBox>
+						<VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+							<children>
+								<Label id="lblDiaChi" text="Diện tích :" />
+								<TextField id="dienTichField" />
+							</children>
+							<GridPane.margin>
+								<Insets left="5.0" />
+							</GridPane.margin>
+						</VBox>
+						<VBox prefHeight="50.0" prefWidth="163.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
+							<children>
+								<Label id="lblMucDichSuDung" text="Sử dụng vào mục đích :" />
+								<TextField id="mucDichSuDungField" prefHeight="25.0" prefWidth="278.0" />
+							</children>
+							<GridPane.margin>
+								<Insets left="5.0" />
+							</GridPane.margin>
+						</VBox>
+						<VBox prefHeight="50.0" prefWidth="163.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
+							<children>
+								<Label id="lblThoiDiem" text="Thời điểm :" />
+								<TextField id="tuThoiDiemField" prefHeight="25.0" prefWidth="278.0" />
+							</children>
+							<GridPane.margin>
+								<Insets left="5.0" />
+							</GridPane.margin>
+						</VBox>
+						<VBox prefHeight="50.0" prefWidth="163.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
+							<children>
+								<Label id="lblThoiDiem" text="Thời hạn đề nghị được sử dụng đất :" />
+								<TextArea id="txaThoiHanSDD" prefHeight="200.0" prefWidth="200.0" />
+							</children>
+							<GridPane.margin>
+								<Insets left="5.0" />
+							</GridPane.margin>
+						</VBox>
+						<VBox prefHeight="50.0" prefWidth="163.0" GridPane.columnIndex="1" GridPane.rowIndex="8">
+							<children>
+								<Label id="lblNguonGocSD" text="Nguồn gốc sử dụng :" />
+								<TextArea id="txaNguonGocSD" prefHeight="200.0" prefWidth="200.0" />
+							</children>
+							<GridPane.margin>
+								<Insets left="5.0" />
+							</GridPane.margin>
+						</VBox>
+						<VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+							<children>
+								<Label id="lblSuDungRieng" text="Sử dụng riêng :" />
+								<TextField id="suDungRiengField" />
+							</children>
+							<GridPane.margin>
+								<Insets left="5.0" />
+							</GridPane.margin>
+						</VBox>
+
+					</children>
+					<VBox.margin>
+						<Insets />
+					</VBox.margin>
+				</GridPane>
+			</children>
+			<padding>
+				<Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+			</padding>
+		</VBox>
+		<HBox alignment="CENTER_RIGHT" prefHeight="30.0" spacing="5.0" styleClass="bottom-bar" VBox.vgrow="NEVER">
+			<children>
+				<Button fx:id="printButton" mnemonicParsing="false" onAction="#handlePrint" prefHeight="54.0" prefWidth="120.0" text="Xuất File" />
+				<Button mnemonicParsing="false" onAction="#handleCancel" prefHeight="54.0" prefWidth="120.0" text="Đóng">
+					<HBox.margin>
+						<Insets right="15.0" />
+					</HBox.margin>
+				</Button>
+			</children>
+			<padding>
+				<Insets bottom="10.0" left="5.0" right="5.0" top="10.0" />
+			</padding>
+			<VBox.margin>
+				<Insets />
+			</VBox.margin>
+		</HBox>
+	</children>
+</VBox>

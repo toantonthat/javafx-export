@@ -84,6 +84,9 @@ public class WordUtil {
 		}
 	}
 	
+	/*
+	 * ## References : https://stackoverflow.com/questions/42655397/read-files-from-boot-inf-classes
+	 */
 	public static SaveFile exportWord(File fileOutput, String fileName, HashMap<String, String> mappings) {
 		try {
 			ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();

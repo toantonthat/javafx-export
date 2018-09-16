@@ -6,6 +6,9 @@ import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.ResourceBundle;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.export.model.FileModel;
 import com.export.model.SaveFile;
 import com.export.presentation.ProgressStage;
@@ -25,6 +28,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 public class ExportController implements Initializable {
+	private static final Logger logger = LoggerFactory.getLogger(ExportController.class);
 	@FXML
 	private TextField tenField, soCMNDField, namSinhField, noiCapField, ngheNghiepField, diaChiThuongTruField, thuaDatField,
 	diaChiField, dienTichField, mucDichSuDungField, tuThoiDiemField, suDungRiengField;
@@ -151,6 +155,7 @@ public class ExportController implements Initializable {
 			FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("DOC files (*.doc)", "*.doc");
 			fileChooser.getExtensionFilters().add(extFilter);
 			File fileOutput = fileChooser.showSaveDialog(primaryStage);
+			
 			if (fileOutput != null) {
 				final String fileName = "DON-CAP-GIAY-CN.docx"; //4m²
 				Task<Void> task = new Task<Void>() {
@@ -160,11 +165,13 @@ public class ExportController implements Initializable {
 						try {
 							SaveFile saver = WordUtil.exportWord(fileOutput, fileName, mappings);
 							if (saver.save()) {
+								logger.info("saved");
 								saver.getOutput().close();
 								updateProgress(10, 10);
 							}
 						} catch (Exception e) {
 							e.printStackTrace();
+							logger.info("Exception " + e.toString());
 						}
 						return null;
 					}

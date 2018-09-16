@@ -44,10 +44,7 @@ public class MainController implements Initializable {
 	private ObservableList<FileModel> FILELIST = FXCollections.observableArrayList();
 
 	private FileModelDAL fileDAL = new FileModelDAL();
-
-	private double xOffset = 0;
-	private double yOffset = 0;
-
+	
 	@FXML
     private Button exportButton, viewButton;
 	@FXML
@@ -144,8 +141,8 @@ public class MainController implements Initializable {
 		stage.show();*/
 	}
 
+	@SuppressWarnings("unused")
 	private void windows(String path, String title, ActionEvent event) throws Exception {
-
 		double width = ((Node) event.getSource()).getScene().getWidth();
 		double height = ((Node) event.getSource()).getScene().getHeight();
 

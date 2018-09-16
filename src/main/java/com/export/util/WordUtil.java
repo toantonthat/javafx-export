@@ -4,23 +4,31 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URLConnection;
 import java.nio.charset.Charset;
 import java.util.HashMap;
 
+import org.apache.commons.compress.utils.IOUtils;
+import org.apache.commons.io.FileUtils;
 import org.docx4j.model.datastorage.migration.VariablePrepare;
 import org.docx4j.openpackaging.exceptions.Docx4JException;
 import org.docx4j.openpackaging.io3.Save;
 import org.docx4j.openpackaging.packages.WordprocessingMLPackage;
 import org.docx4j.openpackaging.parts.WordprocessingML.MainDocumentPart;
-import org.springframework.core.io.ClassPathResource;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
+import org.springframework.core.io.support.ResourcePatternResolver;
 
 import com.export.model.SaveFile;
 import com.j256.simplemagic.ContentInfo;
 import com.j256.simplemagic.ContentInfoUtil;
 
 public class WordUtil {
+	private static final Logger logger = LoggerFactory.getLogger(WordUtil.class);
 	private final static String MIME_TYPE = "application/octet-stream";
 	
 	public static String getMimeType(File file) {
@@ -78,24 +86,43 @@ public class WordUtil {
 	
 	public static SaveFile exportWord(File fileOutput, String fileName, HashMap<String, String> mappings) {
 		try {
-			File file = new ClassPathResource("files/" + fileName).getFile();
-			WordprocessingMLPackage wordMLPackage;
-			ByteArrayOutputStream out = new ByteArrayOutputStream();
-			String mimeType = URLConnection.guessContentTypeFromName(file.getName());
-			if (mimeType == null) {
-				mimeType = "application/octet-stream";
+			ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
+			Resource[] resources = resolver.getResources("classpath*:static/*.docx");
+			for (Resource resource : resources) {
+				if (resource.exists()) {
+					if (resource.getFilename().equals(fileName)) {
+						InputStream inputStream = resource.getInputStream();
+						File file = File.createTempFile(resource.getFilename(), ".docx");
+						try {
+							FileUtils.copyInputStreamToFile(inputStream, file);
+						} finally {
+							IOUtils.closeQuietly(inputStream);
+						}
+						logger.info("file :: " + file.getPath());
+						if (file.exists()) {
+							logger.info("file exists");
+							WordprocessingMLPackage wordMLPackage;
+							ByteArrayOutputStream out = new ByteArrayOutputStream();
+							String mimeType = URLConnection.guessContentTypeFromName(file.getName());
+							if (mimeType == null) {
+								mimeType = "application/octet-stream";
+							}
+							wordMLPackage = WordprocessingMLPackage.load(file);
+							VariablePrepare.prepare(wordMLPackage);
+							wordMLPackage.getMainDocumentPart().variableReplace(mappings);
+							wordMLPackage = wordMLPackage.getMainDocumentPart().convertAltChunks();
+							wordMLPackage.save(out);
+							SaveFile saver = new SaveFile(wordMLPackage);
+							OutputStream output = new FileOutputStream(fileOutput);
+							saver.setOutput(output);
+							return saver;
+						}
+					}
+				}
 			}
-			wordMLPackage = WordprocessingMLPackage.load(file);
-			VariablePrepare.prepare(wordMLPackage);
-			wordMLPackage.getMainDocumentPart().variableReplace(mappings);
-			wordMLPackage = wordMLPackage.getMainDocumentPart().convertAltChunks();
-			wordMLPackage.save(out);
-			SaveFile saver = new SaveFile(wordMLPackage);
-			OutputStream output = new FileOutputStream(fileOutput);
-			saver.setOutput(output);
-			return saver;
 		} catch (Exception e) {
 			e.printStackTrace();
+			logger.info("error " + e.toString());
 		}
 		return null;
 	}

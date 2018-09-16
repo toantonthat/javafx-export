@@ -2,12 +2,14 @@ package com.export.controller;
 
 import java.io.File;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.ResourceBundle;
 
 import com.export.model.FileModel;
 import com.export.model.SaveFile;
 import com.export.presentation.ProgressStage;
+import com.export.util.Utils;
 import com.export.util.WordUtil;
 
 import javafx.concurrent.Task;
@@ -44,6 +46,95 @@ public class ExportController implements Initializable {
 	public void setFileModel(FileModel fileModel) {
 		this.fileModel = fileModel;
 	}
+	
+	private HashMap<String, String> initDonCapGiayChungNhanSDD() {
+		HashMap<String, String> mappings = new HashMap<String, String>();
+		String hoVaTen = tenField.getText();
+		String namSinh = namSinhField.getText();
+		String soCMND = soCMNDField.getText();
+		LocalDate ngayCap = ngayCapfield.getValue();
+		String noiCap = noiCapField.getText();
+		String ngheNghiep = ngheNghiepField.getText();
+		String diaChiThuongTru = txaDiaChiThuongTru.getText();
+		String soThuaDat = thuaDatField.getText();
+		String soBanDo = "";
+		String diaChiTai = diaChiField.getText();
+		String dienTichThuaDat = dienTichField.getText();
+		String dienTichSuDungRieng = suDungRiengField.getText();
+		String mucDichSuDung = suDungRiengField.getText();
+		String tuThoiDiem = tuThoiDiemField.getText();
+		String thoiHanDeNghiSuDungDat = txaThoiHanSDD.getText();
+		String nguonGocSuDung = txaNguonGocSD.getText();
+		
+		mappings.put("hoVaTen", hoVaTen);
+		mappings.put("namSinh", namSinh);
+		mappings.put("soCMND", soCMND);
+		mappings.put("ngayCap", "............");
+		mappings.put("noiCap", noiCap);
+		mappings.put("ngheNghiep", ngheNghiep);
+		mappings.put("diaChiThuongTru", diaChiThuongTru);
+		mappings.put("diaChiThuongTru", diaChiThuongTru);
+
+		mappings.put("soThuaDat", soThuaDat);
+		mappings.put("soBanDo", soBanDo);
+		mappings.put("diaChiTai", diaChiTai);
+		mappings.put("dienTichThuaDat", dienTichThuaDat);
+		mappings.put("dienTichSuDungRieng", dienTichSuDungRieng);
+		mappings.put("tuThoiDiem", tuThoiDiem);
+		mappings.put("thoiHanDeNghiSuDungDat", thoiHanDeNghiSuDungDat);
+		mappings.put("nguonGocSuDung", nguonGocSuDung);
+		mappings.put("mucDichSuDung", mucDichSuDung);
+		
+		if ("".equals(hoVaTen)) {
+			mappings.put("hoVaTen", "......................");
+		}
+		if ("".equals(namSinh)) {
+			mappings.put("namSinh", "............");
+		}
+		if ("".equals(soCMND)) {
+			mappings.put("soCMND", "............");
+		}
+		if (ngayCap != null) {
+			mappings.put("ngayCap", Utils.formatDate(ngayCap, "dd/MM/yyyy"));
+		}
+		if ("".equals(noiCap)) {
+			mappings.put("noiCap", "......................");
+		}
+		if ("".equals(ngheNghiep)) {
+			mappings.put("ngheNghiep", "......................");
+		}
+		if ("".equals(diaChiThuongTru)) {
+			mappings.put("diaChiThuongTru", ".............................................");
+		}
+		if ("".equals(soThuaDat)) {
+			mappings.put("soThuaDat", "...............");
+		}
+		if ("".equals(soBanDo)) {
+			mappings.put("soBanDo", "...............");
+		}
+		if ("".equals(diaChiTai)) {
+			mappings.put("diaChiTai", ".............................................");
+		}
+		if ("".equals(dienTichThuaDat)) {
+			mappings.put("dienTichThuaDat", ".......");
+		}
+		if ("".equals(dienTichSuDungRieng)) {
+			mappings.put("dienTichSuDungRieng", ".......");
+		}
+		if ("".equals(mucDichSuDung)) {
+			mappings.put("mucDichSuDung", ".............................................");
+		}
+		if ("".equals(tuThoiDiem)) {
+			mappings.put("tuThoiDiem", ".......");
+		}
+		if ("".equals(thoiHanDeNghiSuDungDat)) {
+			mappings.put("thoiHanDeNghiSuDungDat", ".............................................");
+		}
+		if ("".equals(nguonGocSuDung)) {
+			mappings.put("nguonGocSuDung", ".............................................");
+		}
+		return mappings;
+	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -52,13 +143,8 @@ public class ExportController implements Initializable {
 
 	@FXML
 	public void handlePrint(ActionEvent event) {
-		System.out.println("handlePrint");
-		System.out.println("tenField " + tenField.getText());
 		try {
-			HashMap<String, String> mappings = new HashMap<String, String>();
-			mappings.put("hoVaTen", tenField.getText());
-			mappings.put("namSinh", "1991");
-			
+			HashMap<String, String> mappings = initDonCapGiayChungNhanSDD();
 			Stage primaryStage = new Stage();
 			FileChooser fileChooser = new FileChooser();
 			fileChooser.setTitle("Lưu tệp tin");
@@ -66,7 +152,7 @@ public class ExportController implements Initializable {
 			fileChooser.getExtensionFilters().add(extFilter);
 			File fileOutput = fileChooser.showSaveDialog(primaryStage);
 			if (fileOutput != null) {
-				final String fileName = "DON-CAP-GIAY-CN.docx";
+				final String fileName = "DON-CAP-GIAY-CN.docx"; //4m²
 				Task<Void> task = new Task<Void>() {
 					@Override
 					protected Void call() throws Exception {

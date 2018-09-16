@@ -202,13 +202,13 @@
 									</children>
 								</VBox>
 								<VBox />
-								<TextArea id="txaDiaChiThuongTru" prefHeight="200.0" prefWidth="200.0" />
+								<TextArea fx:id="txaDiaChiThuongTru" prefHeight="200.0" prefWidth="200.0" />
 							</children>
 						</VBox>
 						<VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
 							<children>
 								<Label id="lblThuaDat" text="Thửa đất số :" />
-								<TextField id="thuaDatField" />
+								<TextField fx:id="thuaDatField" />
 							</children>
 							<GridPane.margin>
 								<Insets left="5.0" />
@@ -227,7 +227,7 @@
 						<VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
 							<children>
 								<Label id="lblDiaChi" text="Địa chỉ tại :" />
-								<TextField id="diaChiField" />
+								<TextField fx:id="diaChiField" />
 							</children>
 							<GridPane.margin>
 								<Insets left="5.0" />
@@ -236,7 +236,7 @@
 						<VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
 							<children>
 								<Label id="lblDiaChi" text="Diện tích :" />
-								<TextField id="dienTichField" />
+								<TextField fx:id="dienTichField" />
 							</children>
 							<GridPane.margin>
 								<Insets left="5.0" />
@@ -245,7 +245,7 @@
 						<VBox prefHeight="50.0" prefWidth="163.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
 							<children>
 								<Label id="lblMucDichSuDung" text="Sử dụng vào mục đích :" />
-								<TextField id="mucDichSuDungField" prefHeight="25.0" prefWidth="278.0" />
+								<TextField fx:id="mucDichSuDungField" prefHeight="25.0" prefWidth="278.0" />
 							</children>
 							<GridPane.margin>
 								<Insets left="5.0" />
@@ -254,7 +254,7 @@
 						<VBox prefHeight="50.0" prefWidth="163.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
 							<children>
 								<Label id="lblThoiDiem" text="Thời điểm :" />
-								<TextField id="tuThoiDiemField" prefHeight="25.0" prefWidth="278.0" />
+								<TextField fx:id="tuThoiDiemField" prefHeight="25.0" prefWidth="278.0" />
 							</children>
 							<GridPane.margin>
 								<Insets left="5.0" />
@@ -263,7 +263,7 @@
 						<VBox prefHeight="50.0" prefWidth="163.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
 							<children>
 								<Label id="lblThoiDiem" text="Thời hạn đề nghị được sử dụng đất :" />
-								<TextArea id="txaThoiHanSDD" prefHeight="200.0" prefWidth="200.0" />
+								<TextArea fx:id="txaThoiHanSDD" prefHeight="200.0" prefWidth="200.0" />
 							</children>
 							<GridPane.margin>
 								<Insets left="5.0" />
@@ -272,7 +272,7 @@
 						<VBox prefHeight="50.0" prefWidth="163.0" GridPane.columnIndex="1" GridPane.rowIndex="8">
 							<children>
 								<Label id="lblNguonGocSD" text="Nguồn gốc sử dụng :" />
-								<TextArea id="txaNguonGocSD" prefHeight="200.0" prefWidth="200.0" />
+								<TextArea fx:id="txaNguonGocSD" prefHeight="200.0" prefWidth="200.0" />
 							</children>
 							<GridPane.margin>
 								<Insets left="5.0" />
@@ -281,7 +281,7 @@
 						<VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
 							<children>
 								<Label id="lblSuDungRieng" text="Sử dụng riêng :" />
-								<TextField id="suDungRiengField" />
+								<TextField fx:id="suDungRiengField" />
 							</children>
 							<GridPane.margin>
 								<Insets left="5.0" />

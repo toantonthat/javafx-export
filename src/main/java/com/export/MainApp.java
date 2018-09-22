@@ -37,9 +37,7 @@ public class MainApp extends Application {
 
 	@Override
 	public void start(Stage stage) throws Exception {
-		Parent root = FXMLLoader.load(getClass().getResource("/fxml/Main.fxml"));
-		//SIFStage mainStage = new SIFStage(stage, FXMLLoader.load(getClass().getResource("/fxml/Main.fxml")));
-		//ApplicationContext.stageStack.push(mainStage);
+		/*Parent root = FXMLLoader.load(getClass().getResource("/fxml/Main.fxml"));
         root.setOnMousePressed((MouseEvent event) -> {
             xOffset = event.getSceneX();
             yOffset = event.getSceneY();
@@ -53,6 +51,14 @@ public class MainApp extends Application {
         stage.getIcons().add(new Image("/images/logo.png"));
         stage.initStyle(StageStyle.UNDECORATED);
         stage.setScene(scene);
+        stage.show();*/
+		
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/MainView.fxml")); // DMMMMM dau ..
+        Parent root = (Parent) fxmlLoader.load();
+        //Image image = new Image(String.valueOf(this.getClass().getResource("/images/product.png.png")));
+        //stage.getIcons().add(image);
+        stage.setTitle("Export File:: Version 1.0");
+        stage.setScene(new Scene(root));
         stage.show();
 	}
 

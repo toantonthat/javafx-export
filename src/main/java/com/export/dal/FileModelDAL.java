@@ -12,7 +12,7 @@ import javafx.collections.ObservableList;
 public class FileModelDAL {
 	private URL loadPath(String url) {
 		if (!"".equals(url)) {
-			return getClass().getResource("/files/" + url);
+			return getClass().getResource("/static/" + url);
 		}
 		return null;
 	}

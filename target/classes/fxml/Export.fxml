@@ -22,7 +22,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.control.DatePicker?>
 
-<VBox prefHeight="672.0" prefWidth="950.0" stylesheets="@../styles/form.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="672.0" prefWidth="950.0" stylesheets="@../styles/form.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"  fx:controller="com.export.controller.ExportController">
 	<children>
 		<HBox alignment="CENTER_RIGHT" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="0.0" prefWidth="800.0" styleClass="top-bar" VBox.vgrow="NEVER">
 			<padding>

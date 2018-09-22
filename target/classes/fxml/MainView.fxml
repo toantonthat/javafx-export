@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.ToolBar?>
+
+<StackPane fx:id="stackPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.export.controller.MainViewController">
+	<children>
+      <AnchorPane fx:id="sideAnchor" prefHeight="798.0" prefWidth="1200.0">
+         <children>
+            <HBox fx:id="hbox" prefHeight="53.0" prefWidth="1201.0" style="-fx-background-color: #E3F2FD;">
+               <children>
+                  <VBox fx:id="vbox" prefHeight="33.0" prefWidth="1200.0">
+                     <children>
+                        <MenuBar fx:id="menubar" prefHeight="34.0" prefWidth="1200.0">
+                          <menus>
+                            <Menu mnemonicParsing="false" text="File">
+                              <items>
+                                <MenuItem mnemonicParsing="false" text="Close" />
+                              </items>
+                            </Menu>
+                            <Menu fx:id="mnDanhSachDonThu" mnemonicParsing="false" text="Danh sách đơn">
+                              <items>
+                                <MenuItem fx:id="menuItemDDKQSDD" mnemonicParsing="false" text="ĐƠN ĐĂNG KÝ, CẤP GIẤY CHỨNG NHẬN QUYỀN SỬ DỤNG ĐẤT" />
+                              </items>
+                            </Menu>
+                            <Menu mnemonicParsing="false" text="Giúp đỡ">
+                              <items>
+                                <MenuItem mnemonicParsing="false" text="About" />
+                              </items>
+                            </Menu>
+                          </menus>
+                           <padding>
+                              <Insets top="5.0" />
+                           </padding>
+                        </MenuBar>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <TabPane fx:id="tabParent" layoutX="-2.0" layoutY="51.0" prefHeight="554.0" prefWidth="1201.0" tabClosingPolicy="ALL_TABS">
+              
+            </TabPane>
+            <HBox layoutX="-1.0" layoutY="662.0" prefHeight="53.0" prefWidth="1201.0" style="-fx-background-color: #3E2723;" />
+         </children>
+      </AnchorPane>
+	</children>
+</StackPane>
